@@ -1,0 +1,363 @@
+:host {
+  display: block;
+}
+
+/* ===========================
+   TOKENS
+   Paleta pensada para RRHH: azul institucional profundo
+   + un acento "menta" para estados vivos (activo, éxito, presencia)
+=========================== */
+
+.admin-layout {
+  --rrhh-navy-900: #0a1f44;
+  --rrhh-navy-700: #123a73;
+  --rrhh-blue-600: #1c5fc4;
+  --rrhh-blue-500: #2f6fe0;
+  --rrhh-blue-300: #7fb1ff;
+  --rrhh-blue-100: #e8f0ff;
+  --rrhh-accent-500: #58a6ff;
+  --rrhh-slate-600: #5a6b8c;
+  --rrhh-slate-200: #dde4f2;
+  --rrhh-bg: #f4f7fd;
+  --rrhh-white: #ffffff;
+  --rrhh-radius: 14px;
+  --rrhh-shadow-sm: 0 2px 8px rgba(10, 31, 68, 0.06);
+  --rrhh-shadow-md: 0 12px 32px rgba(10, 31, 68, 0.14);
+
+  min-height: 100vh;
+  background: var(--rrhh-bg);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: linear-gradient(190deg, var(--rrhh-navy-900) 0%, var(--rrhh-navy-700) 65%, var(--rrhh-blue-600) 130%);
+  display: flex;
+  flex-direction: column;
+  transition: width .28s ease, min-width .28s ease, transform .28s ease;
+  overflow-x: hidden;
+  box-shadow: var(--rrhh-shadow-md);
+  position: relative;
+  z-index: 1040;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  min-height: 72px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-width: 0;
+}
+
+.brand-mark {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--rrhh-accent-500);
+  color: var(--rrhh-navy-900);
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transition: opacity .2s ease;
+}
+
+.sidebar-toggle {
+  flex: 0 0 auto;
+  opacity: .85;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.sidebar-toggle:hover {
+  opacity: 1;
+}
+
+/* Sidebar colapsado */
+
+.sidebar.collapsed {
+  width: 76px;
+  min-width: 76px;
+}
+
+.sidebar.collapsed .sidebar-header {
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+.sidebar.collapsed .sidebar-title,
+.sidebar.collapsed .sidebar-footer-text {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* ===========================
+   MENÚ
+=========================== */
+
+.sidebar-nav {
+  padding: .9rem .6rem;
+  overflow-y: auto;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .18);
+  border-radius: 10px;
+}
+
+.sidebar .list-group-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  height: 50px;
+  margin-bottom: 4px;
+  padding-left: 14px;
+  padding-right: 14px;
+
+  background: transparent;
+  color: rgba(255, 255, 255, .82);
+  border: 0;
+  border-radius: 10px;
+
+  position: relative;
+  font-weight: 500;
+  letter-spacing: .01em;
+
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.sidebar .list-group-item:hover {
+  background: rgba(255, 255, 255, .1);
+  color: white;
+}
+
+.sidebar .list-group-item:focus-visible {
+  outline: 2px solid var(--rrhh-blue-300);
+  outline-offset: 2px;
+}
+
+/* Estado activo: acento menta como marcador de posición actual */
+
+.sidebar .list-group-item.active {
+  background: rgba(255, 255, 255, .14);
+  color: white;
+}
+
+.sidebar .list-group-item.active::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 22px;
+  border-radius: 4px;
+  background: var(--rrhh-accent-500);
+}
+
+/* Iconos */
+
+.sidebar .list-group-item i {
+  font-size: 1.15rem;
+  min-width: 22px;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+/* Texto */
+
+.sidebar .list-group-item span {
+  white-space: nowrap;
+  transition: opacity .2s ease;
+}
+
+.sidebar.collapsed .list-group-item {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar.collapsed .list-group-item.active::before {
+  left: 0;
+}
+
+.sidebar.collapsed .list-group-item span {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar.collapsed hr {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Footer del sidebar */
+
+.sidebar-footer {
+  padding: .9rem 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.sidebar-footer-text {
+  font-size: .72rem;
+  color: rgba(255, 255, 255, .45);
+  letter-spacing: .04em;
+  transition: opacity .2s ease;
+}
+
+/* Backdrop móvil, oculto en escritorio */
+
+.sidebar-backdrop {
+  display: none;
+}
+
+/* ===========================
+   TOPBAR
+=========================== */
+
+.topbar {
+  min-height: 72px;
+  background: var(--rrhh-white) !important;
+}
+
+.mobile-toggle {
+  border: 0;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .35rem .6rem .35rem .35rem;
+  border-radius: 999px;
+  background: var(--rrhh-blue-100);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--rrhh-blue-600);
+  color: white;
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.user-name {
+  color: var(--rrhh-navy-700) !important;
+  font-size: .92rem;
+}
+
+.text-primary {
+  color: var(--rrhh-navy-700) !important;
+}
+
+.btn-outline-primary {
+  border-color: var(--rrhh-navy-700);
+  color: var(--rrhh-navy-700);
+}
+
+.btn-outline-primary:hover {
+  background: var(--rrhh-navy-700);
+  color: white;
+}
+
+.logout-btn {
+  font-weight: 600;
+  font-size: .88rem;
+}
+
+.bi {
+  vertical-align: middle;
+}
+
+/* ===========================
+   CONTENIDO
+=========================== */
+
+.content-area {
+  background: var(--rrhh-bg);
+}
+
+/* ===========================
+   RESPONSIVE
+   En móvil el sidebar se convierte en un panel superpuesto
+=========================== */
+
+@media (max-width: 991.98px) {
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    min-width: 260px;
+    transform: translateX(0);
+  }
+
+  .sidebar.collapsed {
+    width: 260px;
+    min-width: 260px;
+    transform: translateX(-100%);
+  }
+
+  .main-panel {
+    width: 100%;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 31, 68, .45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 1030;
+  }
+
+  .sidebar-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .user-name {
+    display: none;
+  }
+}

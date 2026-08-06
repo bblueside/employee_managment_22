@@ -1,0 +1,127 @@
+:host {
+  display: block;
+}
+
+/* ===========================
+   TOKENS
+   Mismos valores que layout.css para mantener una sola identidad visual
+=========================== */
+
+.login-shell {
+  --rrhh-navy-900: #0a1f44;
+  --rrhh-navy-700: #123a73;
+  --rrhh-blue-600: #1c5fc4;
+  --rrhh-blue-500: #2f6fe0;
+  --rrhh-blue-300: #7fb1ff;
+  --rrhh-blue-100: #e8f0ff;
+  --rrhh-accent-500: #58a6ff;
+  --rrhh-slate-600: #5a6b8c;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(88, 166, 255, .22), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(47, 111, 224, .18), transparent 45%),
+    linear-gradient(190deg, var(--rrhh-navy-900) 0%, var(--rrhh-navy-700) 65%, var(--rrhh-blue-600) 130%);
+}
+
+/* ===========================
+   TARJETA
+=========================== */
+
+.login-card {
+  background: #ffffff;
+  padding: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.brand-badge {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--rrhh-accent-500);
+  color: var(--rrhh-navy-900);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow: 0 15px 35px rgba(20, 76, 156, 0.28);
+}
+
+.text-primary {
+  color: var(--rrhh-navy-700) !important;
+}
+
+.login-subtitle {
+  color: var(--rrhh-slate-600);
+  font-size: .92rem;
+}
+
+/* ===========================
+   FORMULARIO
+=========================== */
+
+.form-label {
+  color: var(--rrhh-navy-700);
+  font-size: .9rem;
+}
+
+.input-group-text {
+  background: #f4f7fd;
+  border: 1px solid #d7e2f7;
+  border-right: 0;
+  color: var(--rrhh-blue-600);
+}
+
+.form-control {
+  border: 1px solid #d7e2f7;
+  border-left: 0;
+  background: #f4f7fd;
+  color: #1f3550;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: var(--rrhh-blue-500);
+  color: var(--rrhh-blue-500);
+}
+
+.form-control:focus {
+  border-color: var(--rrhh-blue-500);
+  box-shadow: 0 0 0 0.22rem rgba(47, 110, 224, 0.18);
+  background: #ffffff;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--rrhh-navy-700) 0%, var(--rrhh-blue-600) 100%);
+  border: none;
+  box-shadow: 0 10px 24px rgba(13, 59, 143, 0.24);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(135deg, #0a2f72 0%, #1a52ad 100%);
+  border: none;
+  box-shadow: 0 14px 28px rgba(13, 59, 143, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.login-footnote {
+  margin-top: 1.5rem;
+  font-size: .78rem;
+  color: var(--rrhh-slate-600);
+  letter-spacing: .02em;
+}
+
+@media (max-width: 575.98px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,54 @@
+<div class="login-shell">
+  <div class="container">
+    <div class="row min-vh-100 align-items-center justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+        <div class="login-card shadow-lg border-0 rounded-4">
+          <div class="text-center mb-4">
+            <div class="brand-badge mx-auto mb-3">RR</div>
+            <h2 class="fw-bold mb-1 text-primary">RRHH</h2>
+            <p class="login-subtitle mb-0">Portal de acceso seguro</p>
+          </div>
+
+          <form>
+            <div class="mb-3">
+              <label for="username" class="form-label fw-semibold">Usuario</label>
+              <div class="input-group input-group-lg">
+                <span class="input-group-text">
+                  <i class="bi bi-person-fill"></i>
+                </span>
+                <input
+                  id="username" name="username" [(ngModel)]="loginObj.userName"
+                  type="text"
+                  class="form-control rounded-end-3"
+                  placeholder="Ingresa tu usuario"
+                />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="password" class="form-label fw-semibold">Contraseña</label>
+              <div class="input-group input-group-lg">
+                <span class="input-group-text">
+                  <i class="bi bi-lock-fill"></i>
+                </span>
+                <input
+                  id="password" name="password" [(ngModel)]="loginObj.password"
+                  type="password"
+                  class="form-control rounded-end-3"
+                  placeholder="Ingresa tu contraseña"
+                />
+              </div>
+            </div>
+
+            <button type="button" (click)="onlogin()" class="btn btn-primary btn-lg w-100 rounded-3 fw-semibold">
+              <i class="bi bi-box-arrow-in-right me-1"></i>
+              Iniciar sesión
+            </button>
+          </form>
+
+          <p class="login-footnote text-center mb-0">Sistema de gestión de recurso humano</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

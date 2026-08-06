@@ -1,0 +1,294 @@
+:host {
+  display: block;
+}
+
+/* ===========================
+   TOKENS
+   Mismos valores que layout.css y login.css
+=========================== */
+
+.employees-section {
+  --rrhh-navy-900: #0a1f44;
+  --rrhh-navy-700: #123a73;
+  --rrhh-blue-600: #1c5fc4;
+  --rrhh-blue-500: #2f6fe0;
+  --rrhh-blue-300: #7fb1ff;
+  --rrhh-blue-100: #e8f0ff;
+  --rrhh-accent-500: #58a6ff;
+  --rrhh-slate-600: #5a6b8c;
+  --rrhh-slate-200: #dde4f2;
+  --rrhh-bg: #f4f7fd;
+
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ===========================
+   ENCABEZADO
+=========================== */
+
+.section-title {
+  color: var(--rrhh-navy-900);
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.section-subtitle {
+  color: var(--rrhh-slate-600);
+  font-size: .92rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--rrhh-navy-700) 0%, var(--rrhh-blue-600) 100%);
+  border: none;
+  box-shadow: 0 10px 24px rgba(13, 59, 143, 0.2);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(135deg, #0a2f72 0%, #1a52ad 100%);
+  box-shadow: 0 14px 28px rgba(13, 59, 143, 0.26);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* ===========================
+   TARJETA
+=========================== */
+
+.table-card {
+  background: #ffffff;
+  overflow: hidden;
+  border: 1px solid var(--rrhh-slate-200);
+}
+
+.table-toolbar {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--rrhh-slate-200);
+}
+
+.search-box {
+  position: relative;
+  flex: 1 1 320px;
+  max-width: 360px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--rrhh-slate-600);
+  font-size: .95rem;
+}
+
+.search-box .form-control {
+  padding-left: 2.4rem;
+  border: 1px solid var(--rrhh-slate-200);
+  background: var(--rrhh-bg);
+  border-radius: 10px;
+  color: #1f3550;
+}
+
+.search-box .form-control:focus {
+  border-color: var(--rrhh-blue-500);
+  box-shadow: 0 0 0 0.2rem rgba(47, 110, 224, 0.16);
+  background: #ffffff;
+}
+
+.results-count {
+  font-size: .85rem;
+  color: var(--rrhh-slate-600);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===========================
+   TABLA
+=========================== */
+
+.employees-table {
+  margin-bottom: 0;
+}
+
+.employees-table thead th {
+  background: var(--rrhh-navy-900);
+  color: rgba(255, 255, 255, .85);
+  font-size: .74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border: 0;
+  padding: .9rem 1.4rem;
+  white-space: nowrap;
+}
+
+.employees-table thead th:first-child {
+  border-top-left-radius: 0;
+}
+
+.employees-table tbody td {
+  padding: .95rem 1.4rem;
+  border-bottom: 1px solid var(--rrhh-slate-200);
+  color: #33425e;
+  font-size: .92rem;
+  vertical-align: middle;
+}
+
+.employees-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.employees-table tbody tr {
+  transition: background-color .15s ease;
+}
+
+.employees-table tbody tr:hover {
+  background: var(--rrhh-blue-100);
+}
+
+/* Celda empleado */
+
+.employee-cell {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+.employee-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--rrhh-blue-600);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.employee-name {
+  font-weight: 600;
+  color: var(--rrhh-navy-900);
+}
+
+/* Enlace de correo */
+
+.email-link {
+  color: var(--rrhh-blue-600);
+  text-decoration: none;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+/* Badges */
+
+.dept-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+  background: var(--rrhh-bg);
+  border: 1px solid var(--rrhh-slate-200);
+  color: var(--rrhh-slate-600);
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gender-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: var(--rrhh-slate-600);
+  font-size: .85rem;
+}
+
+.gender-badge i {
+  color: var(--rrhh-blue-500);
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .75rem;
+  border-radius: 999px;
+  background: var(--rrhh-blue-100);
+  color: var(--rrhh-blue-600);
+  font-size: .8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Acciones */
+
+.btn-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--rrhh-slate-200);
+  background: #ffffff;
+  color: var(--rrhh-blue-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.btn-icon:hover {
+  background: var(--rrhh-blue-100);
+  border-color: var(--rrhh-blue-300);
+}
+
+.btn-icon-danger {
+  color: #c9354f;
+}
+
+.btn-icon-danger:hover {
+  background: #fdeaee;
+  border-color: #f3b8c4;
+}
+
+/* Estado vacío */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  padding: 3rem 1rem;
+  color: var(--rrhh-slate-600);
+}
+
+.empty-state i {
+  font-size: 2.2rem;
+  color: var(--rrhh-blue-300);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 767.98px) {
+
+  .table-toolbar {
+    padding: 1rem;
+  }
+
+  .search-box {
+    max-width: none;
+    flex: 1 1 100%;
+  }
+
+  .employees-table thead th,
+  .employees-table tbody td {
+    padding: .75rem .9rem;
+  }
+}

@@ -1,0 +1,100 @@
+<section class="employee-form-section">
+
+    <div class="page-header">
+        <div>
+            <h2 class="section-title">Registrar empleado</h2>
+            <p class="section-subtitle">
+                Complete la información para registrar un nuevo empleado.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-card">
+
+        <form>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Nombre del empleado</label>
+                    <input type="text" name="employeeName" [(ngModel)]="EmployeeObj.employeeName" placeholder="Nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" name="contactNo" [(ngModel)]="EmployeeObj.contactNo" placeholder="Número de contacto">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" name="emailId" [(ngModel)]="EmployeeObj.emailId" placeholder="correo@empresa.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <select name="deptId" (change)="onChangeParentDept($event)">
+                         <option selected disabled>Seleccione un departamento</option>
+                        @for(item of parentDeptList(); track item.departmentId){
+                            <option [value]="item.departmentId">{{ item.departmentName }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Departamento Child</label>
+                    <select name="deptId" [(ngModel)]="EmployeeObj.deptId">
+                         <option selected disabled>Seleccione un departamento hijo</option>
+                        @for(item of childDeptList(); track item.childDeptId){
+                            <option [value]="item.childDeptId">{{ item.departmentName }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" [(ngModel)]="EmployeeObj.password" placeholder="********">
+                </div>
+
+                <div class="form-group">
+                    <label>Género</label>
+                    <select name="gender" [(ngModel)]="EmployeeObj.gender">
+                        <option selected disabled>Seleccione</option>
+                        <option>Masculino</option>
+                        <option>Femenino</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Rol</label>
+                    <select name="role" [(ngModel)]="EmployeeObj.role">
+                        <option selected disabled>Seleccione un rol</option>
+                        <option>Administrador</option>
+                        <option>Supervisor</option>
+                        <option>Empleado</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button routerLink="/admin/employee-list" type="button" class="btn-secondary">
+                    Cancelar
+                </button>
+                @if (currentEmployeeId == 0){
+                <button (click)="onCreateEmployee()" type="submit" class="btn-primary">
+                    Registrar empleado
+                </button>   
+                }@else{
+                    <button (click)="onUpdateEmployee(EmployeeObj)" type="submit" class="btn-primary">
+                    Actualizar empleado
+                </button>  
+                }
+               
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
