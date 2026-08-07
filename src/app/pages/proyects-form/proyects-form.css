@@ -1,0 +1,271 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f4f7fd;
+}
+
+.new-project-section{
+
+    --rrhh-navy-900:#0a1f44;
+    --rrhh-navy-700:#123a73;
+    --rrhh-blue-600:#1c5fc4;
+    --rrhh-blue-500:#2f6fe0;
+    --rrhh-blue-300:#7fb1ff;
+    --rrhh-blue-100:#e8f0ff;
+    --rrhh-accent:#58a6ff;
+
+    --rrhh-slate:#5a6b8c;
+    --rrhh-border:#dde4f2;
+    --rrhh-bg:#f4f7fd;
+
+    font-family:"Inter","Segoe UI",sans-serif;
+    display:contents;
+    max-width:960px;
+    margin:0 auto;
+}
+
+/* ==========================
+   ENCABEZADO
+========================== */
+
+.page-header{
+    margin-bottom:25px;
+}
+
+.section-title{
+    color:var(--rrhh-navy-900);
+    font-size:1.7rem;
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.section-subtitle{
+    color:var(--rrhh-slate);
+    font-size:.95rem;
+    margin:0;
+}
+
+/* ==========================
+   TARJETA
+========================== */
+
+.form-card{
+
+    background:#fff;
+    border:1px solid var(--rrhh-border);
+    border-radius:16px;
+    padding:35px;
+
+    box-shadow:0 10px 30px rgba(10,31,68,.08);
+}
+
+.form-section-label{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--rrhh-blue-600);
+    margin:0 0 16px;
+}
+
+.form-section-label:not(:first-child){
+    margin-top:8px;
+    padding-top:26px;
+    border-top:1px solid var(--rrhh-border);
+}
+
+/* ==========================
+   GRID
+========================== */
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-bottom:26px;
+}
+
+.form-grid.single{
+    grid-template-columns:1fr;
+}
+
+/* ==========================
+   CAMPOS
+========================== */
+
+.form-group{
+
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+    font-size:.9rem;
+    font-weight:600;
+    color:var(--rrhh-navy-900);
+}
+
+.form-group .required{
+    color:var(--rrhh-blue-500);
+}
+
+.form-group input,
+.form-group select{
+
+    height:48px;
+
+    border:1px solid var(--rrhh-border);
+    border-radius:12px;
+
+    padding:0 15px;
+
+    background:#fff;
+
+    color:#33425e;
+
+    font-size:.95rem;
+
+    font-family:inherit;
+
+    transition:.25s;
+
+    width:100%;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+    outline:none;
+
+    border-color:var(--rrhh-blue-500);
+
+    box-shadow:0 0 0 .20rem rgba(47,110,224,.15);
+}
+
+.form-group input::placeholder{
+
+    color:#93a1bb;
+}
+
+.form-group select{
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%235a6b8c' stroke-width='1.6' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    padding-right:40px;
+}
+
+.form-hint{
+    margin-top:6px;
+    font-size:.78rem;
+    color:var(--rrhh-slate);
+}
+
+/* ==========================
+   BOTONES
+========================== */
+
+.form-actions{
+
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+
+    margin-top:10px;
+    padding-top:30px;
+    border-top:1px solid var(--rrhh-border);
+}
+
+.btn-primary{
+
+    border:none;
+
+    padding:13px 30px;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-weight:600;
+    font-size:.95rem;
+    font-family:inherit;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        var(--rrhh-navy-700),
+        var(--rrhh-blue-600)
+    );
+
+    box-shadow:0 12px 24px rgba(13,59,143,.18);
+
+    transition:.2s;
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 16px 30px rgba(13,59,143,.28);
+}
+
+.btn-secondary{
+
+    border:1px solid var(--rrhh-border);
+
+    background:white;
+
+    color:var(--rrhh-navy-700);
+
+    padding:13px 30px;
+
+    border-radius:12px;
+
+    font-weight:600;
+    font-size:.95rem;
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn-secondary:hover{
+
+    background:var(--rrhh-blue-100);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .form-card{
+        padding:22px;
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .form-actions{
+
+        flex-direction:column-reverse;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+    }
+
+}

@@ -4,6 +4,8 @@ import { Layout } from './pages/layout/layout';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { EmployeeList } from './pages/employee-list/employee-list';
 import { EmployeeForm } from './pages/employee-form/employee-form';
+import { Proyects } from './pages/proyects/proyects';
+import { ProyectsForm } from './pages/proyects-form/proyects-form';
 
 export const routes: Routes = [
     {
@@ -30,6 +32,14 @@ export const routes: Routes = [
             {
                 path:'new-employee/:id',
                 component:EmployeeForm
+            },
+            {
+                path:'proyects',
+                component:Proyects
+            },
+            {
+                path:'proyects/:id',
+                component: ProyectsForm
             }
         ]
     }
