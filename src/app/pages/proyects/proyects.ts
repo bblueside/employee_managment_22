@@ -1,10 +1,9 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { ProyectsService } from '../../core/services/proyects-service';
-import { Observable } from "rxjs";
 import { Proyect } from "../../core/model/interfaces/Proyect.Model";
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-proyects',
@@ -16,6 +15,8 @@ export class Proyects implements OnInit{
 
 ProyectSrv = inject(ProyectsService)
 proyectList = signal<Proyect[]>([])
+@ViewChild('empModal') modalForm! : ElementRef; //? 
+
 
 ngOnInit(): void {
   this.loadProyects();
@@ -32,6 +33,23 @@ loadProyects(){
   })
 
 }
+
+openEmpModal(){
+  if(this.modalForm){
+    this.modalForm.nativeElement.style.display = "block";
+    this.modalForm.nativeElement.classList.add("show");
+  }
+}
+
+closeEmpModal(){
+  if(this.modalForm){
+    this.modalForm.nativeElement.style.display = "none";
+    this.modalForm.nativeElement.classList.remove("show");
+  }
+}
+
+
+
 
 
 }

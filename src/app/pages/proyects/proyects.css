@@ -331,6 +331,18 @@ body{
    MODAL (crear / editar)
 ========================== */
 
+.modal.show {
+    background-color: rgba(10, 31, 68, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-backdrop.show {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background-color: rgba(10, 31, 68, 0.4);
+}
+
 .modal-content{
     border-radius:18px;
     border:none;
@@ -422,4 +434,493 @@ body{
     color:var(--rrhh-blue-300);
     margin-bottom:14px;
 }
+
+.assign-modal{
+        --rrhh-navy-900:#0a1f44;
+        --rrhh-navy-700:#123a73;
+        --rrhh-blue-600:#1c5fc4;
+        --rrhh-blue-500:#2f6fe0;
+        --rrhh-blue-300:#7fb1ff;
+        --rrhh-blue-100:#e8f0ff;
+        --rrhh-accent:#58a6ff;
+
+        --rrhh-slate:#5a6b8c;
+        --rrhh-border:#dde4f2;
+        --rrhh-bg:#f4f7fd;
+
+        font-family:"Inter","Segoe UI",sans-serif;
+    }
+
+    /* ==========================
+       CONTENEDOR / TARJETA MODAL
+    ========================== */
+    .assign-modal .modal-content{
+        background:#fff;
+        border:1px solid var(--rrhh-border);
+        border-radius:16px;
+        box-shadow:0 10px 30px rgba(10,31,68,.08);
+        overflow:hidden;
+    }
+
+    .assign-modal .modal-header{
+        border-bottom:1px solid var(--rrhh-border);
+        padding:28px 35px 22px;
+    }
+
+    .assign-modal .modal-header .modal-title{
+        color:var(--rrhh-navy-900);
+        font-size:1.4rem;
+        font-weight:800;
+        margin-bottom:4px;
+    }
+
+    .assign-modal .modal-header .modal-subtitle{
+        color:var(--rrhh-slate);
+        font-size:.9rem;
+        margin:0;
+    }
+
+    .assign-modal .modal-header .btn-close{
+        box-shadow:none;
+    }
+
+    .assign-modal .modal-body{
+        padding:30px 35px 10px;
+    }
+
+    .assign-modal .modal-footer{
+        border-top:1px solid var(--rrhh-border);
+        padding:24px 35px 30px;
+        gap:15px;
+    }
+
+    /* ==========================
+       FORM SECTION LABEL
+    ========================== */
+    .assign-modal .form-section-label{
+        font-size:.78rem;
+        font-weight:700;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+        color:var(--rrhh-blue-600);
+        margin:0 0 16px;
+    }
+
+    /* ==========================
+       GRID
+    ========================== */
+    .assign-modal .form-grid{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:22px;
+        margin-bottom:22px;
+    }
+
+    .assign-modal .form-grid.single{
+        grid-template-columns:1fr;
+    }
+
+    /* ==========================
+       CAMPOS
+    ========================== */
+    .assign-modal .form-group{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .assign-modal .form-group label{
+        margin-bottom:8px;
+        font-size:.9rem;
+        font-weight:600;
+        color:var(--rrhh-navy-900);
+    }
+
+    .assign-modal .form-group .required{
+        color:var(--rrhh-blue-500);
+    }
+
+    .assign-modal .form-control,
+    .assign-modal .form-select{
+        height:48px;
+        border:1px solid var(--rrhh-border);
+        border-radius:12px;
+        padding:0 15px;
+        background:#fff;
+        color:#33425e;
+        font-size:.95rem;
+        font-family:inherit;
+        transition:.25s;
+        width:100%;
+    }
+
+    .assign-modal .form-control:focus,
+    .assign-modal .form-select:focus{
+        outline:none;
+        border-color:var(--rrhh-blue-500);
+        box-shadow:0 0 0 .20rem rgba(47,110,224,.15);
+    }
+
+    .assign-modal .form-control::placeholder{
+        color:#93a1bb;
+    }
+
+    .assign-modal .form-select{
+        appearance:none;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%235a6b8c' stroke-width='1.6' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat:no-repeat;
+        background-position:right 16px center;
+        padding-right:40px;
+    }
+
+    .assign-modal .form-hint{
+        margin-top:6px;
+        font-size:.78rem;
+        color:var(--rrhh-slate);
+    }
+
+    /* ==========================
+       TABLA DE EMPLEADOS
+    ========================== */
+    .assign-modal .employee-search{
+        position:relative;
+        margin-bottom:14px;
+    }
+
+    .assign-modal .employee-search .form-control{
+        padding-left:42px;
+    }
+
+    .assign-modal .employee-search svg{
+        position:absolute;
+        left:15px;
+        top:50%;
+        transform:translateY(-50%);
+        color:var(--rrhh-slate);
+    }
+
+    .assign-modal .employee-table-wrap{
+        border:1px solid var(--rrhh-border);
+        border-radius:12px;
+        max-height:230px;
+        overflow-y:auto;
+    }
+
+    .assign-modal .employee-table{
+        width:100%;
+        margin:0;
+        border-collapse:separate;
+        border-spacing:0;
+        font-size:.88rem;
+    }
+
+    .assign-modal .employee-table thead th{
+        position:sticky;
+        top:0;
+        z-index:1;
+        background:var(--rrhh-blue-100);
+        color:var(--rrhh-navy-700);
+        font-size:.75rem;
+        font-weight:700;
+        letter-spacing:.03em;
+        text-transform:uppercase;
+        padding:11px 14px;
+        border-bottom:1px solid var(--rrhh-border);
+        white-space:nowrap;
+    }
+
+    .assign-modal .employee-table tbody td{
+        padding:11px 14px;
+        color:#33425e;
+        border-bottom:1px solid var(--rrhh-border);
+        vertical-align:middle;
+    }
+
+    .assign-modal .employee-table tbody tr:last-child td{
+        border-bottom:none;
+    }
+
+    .assign-modal .employee-table tbody tr{
+        cursor:pointer;
+        transition:.15s;
+    }
+
+    .assign-modal .employee-table tbody tr:hover{
+        background:var(--rrhh-bg);
+    }
+
+    .assign-modal .employee-table tbody tr.is-selected{
+        background:var(--rrhh-blue-100);
+    }
+
+    .assign-modal .employee-table .emp-radio{
+        width:1.05em;
+        height:1.05em;
+        cursor:pointer;
+    }
+
+    .assign-modal .employee-table .emp-radio:checked{
+        background-color:var(--rrhh-blue-600);
+        border-color:var(--rrhh-blue-600);
+    }
+
+    .assign-modal .employee-name{
+        font-weight:600;
+        color:var(--rrhh-navy-900);
+    }
+
+    .assign-modal .employee-table .empty-row td{
+        text-align:center;
+        color:var(--rrhh-slate);
+        padding:22px 14px;
+        cursor:default;
+    }
+
+    .assign-modal .employee-table .empty-row:hover{
+        background:transparent;
+    }
+
+    /* ==========================
+       ESTADO ACTIVO (switch)
+    ========================== */
+    .assign-modal .status-toggle{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        border:1px solid var(--rrhh-border);
+        border-radius:12px;
+        padding:0 15px;
+        height:48px;
+        background:var(--rrhh-bg);
+    }
+
+    .assign-modal .status-toggle span{
+        font-size:.9rem;
+        color:#33425e;
+        font-weight:600;
+    }
+
+    .assign-modal .form-check-input{
+        width:2.6em;
+        height:1.4em;
+        cursor:pointer;
+    }
+
+    .assign-modal .form-check-input:checked{
+        background-color:var(--rrhh-blue-600);
+        border-color:var(--rrhh-blue-600);
+    }
+
+    .assign-modal .form-check-input:focus{
+        box-shadow:0 0 0 .20rem rgba(47,110,224,.15);
+        border-color:var(--rrhh-blue-500);
+    }
+
+    /* ==========================
+       TABLA: EMPLEADOS ASIGNADOS
+    ========================== */
+    .assign-modal .assigned-table-wrap{
+        border:1px solid var(--rrhh-border);
+        border-radius:12px;
+        overflow:hidden;
+        margin-bottom:8px;
+    }
+
+    .assign-modal .assigned-table{
+        width:100%;
+        margin:0;
+        border-collapse:collapse;
+        font-size:.88rem;
+    }
+
+    .assign-modal .assigned-table thead th{
+        background:var(--rrhh-bg);
+        color:var(--rrhh-slate);
+        font-size:.72rem;
+        font-weight:700;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+        padding:12px 16px;
+        border-bottom:1px solid var(--rrhh-border);
+        text-align:left;
+        white-space:nowrap;
+    }
+
+    .assign-modal .assigned-table tbody td{
+        padding:13px 16px;
+        color:#33425e;
+        border-bottom:1px solid var(--rrhh-border);
+        vertical-align:middle;
+    }
+
+    .assign-modal .assigned-table tbody tr:last-child td{
+        border-bottom:none;
+    }
+
+    .assign-modal .assigned-table tbody tr:hover{
+        background:var(--rrhh-blue-100);
+    }
+
+    .assign-modal .employee-cell{
+        display:flex;
+        align-items:center;
+        gap:10px;
+    }
+
+    .assign-modal .employee-avatar{
+        width:32px;
+        height:32px;
+        border-radius:50%;
+        background:linear-gradient(135deg,var(--rrhh-navy-700),var(--rrhh-blue-600));
+        color:#fff;
+        font-size:.72rem;
+        font-weight:700;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-shrink:0;
+    }
+
+    .assign-modal .employee-name{
+        font-weight:600;
+        color:var(--rrhh-navy-900);
+        line-height:1.2;
+    }
+
+    .assign-modal .badge-status{
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
+        padding:4px 10px;
+        border-radius:20px;
+        font-size:.75rem;
+        font-weight:600;
+    }
+
+    .assign-modal .badge-status.active{
+        background:#e4f7ea;
+        color:#1c8a4b;
+    }
+
+    .assign-modal .badge-status.active::before{
+        content:"";
+        width:6px;
+        height:6px;
+        border-radius:50%;
+        background:#1c8a4b;
+    }
+
+    .assign-modal .badge-status.inactive{
+        background:#f2f4f8;
+        color:var(--rrhh-slate);
+    }
+
+    .assign-modal .badge-status.inactive::before{
+        content:"";
+        width:6px;
+        height:6px;
+        border-radius:50%;
+        background:var(--rrhh-slate);
+    }
+
+    .assign-modal .btn-remove{
+        border:1px solid var(--rrhh-border);
+        background:#fff;
+        color:#c23b3b;
+        width:32px;
+        height:32px;
+        border-radius:8px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        transition:.2s;
+        padding:0;
+    }
+
+    .assign-modal .btn-remove:hover{
+        background:#fdecec;
+        border-color:#f3c9c9;
+    }
+
+    .assign-modal .assigned-table-empty{
+        padding:28px 16px;
+        text-align:center;
+        color:var(--rrhh-slate);
+        font-size:.85rem;
+    }
+
+    /* ==========================
+       BOTONES
+    ========================== */
+    .assign-modal .btn-primary{
+        border:none;
+        padding:13px 30px;
+        border-radius:12px;
+        color:white;
+        font-weight:600;
+        font-size:.95rem;
+        font-family:inherit;
+        cursor:pointer;
+        background:linear-gradient(135deg,var(--rrhh-navy-700),var(--rrhh-blue-600));
+        box-shadow:0 12px 24px rgba(13,59,143,.18);
+        transition:.2s;
+    }
+
+    .assign-modal .btn-primary:hover{
+        color:white;
+        transform:translateY(-2px);
+        box-shadow:0 16px 30px rgba(13,59,143,.28);
+    }
+
+    .assign-modal .btn-secondary{
+        border:1px solid var(--rrhh-border);
+        background:white;
+        color:var(--rrhh-navy-700);
+        padding:13px 30px;
+        border-radius:12px;
+        font-weight:600;
+        font-size:.95rem;
+        font-family:inherit;
+        cursor:pointer;
+        transition:.2s;
+    }
+
+    .assign-modal .btn-secondary:hover{
+        background:var(--rrhh-blue-100);
+        color:var(--rrhh-navy-700);
+    }
+
+    /* ==========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:768px){
+        .assign-modal .modal-header,
+        .assign-modal .modal-body,
+        .assign-modal .modal-footer{
+            padding-left:22px;
+            padding-right:22px;
+        }
+
+        .assign-modal .form-grid{
+            grid-template-columns:1fr;
+        }
+
+        .assign-modal .assigned-table-wrap{
+            overflow-x:auto;
+        }
+
+        .assign-modal .assigned-table{
+            min-width:560px;
+        }
+
+        .assign-modal .modal-footer{
+            flex-direction:column-reverse;
+        }
+
+        .assign-modal .modal-footer .btn-primary,
+        .assign-modal .modal-footer .btn-secondary{
+            width:100%;
+            margin-left:0 !important;
+        }
+    }
 

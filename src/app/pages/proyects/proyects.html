@@ -1,165 +1,213 @@
 <section class="project-manager-section">
-<div class="container">
+    <div class="container">
 
-    <div class="page-header">
-        <div>
-            <h2 class="section-title">Gestión de proyectos</h2>
-            <p class="section-subtitle">Administre los proyectos activos, en pausa y finalizados de la organización.</p>
+        <div class="page-header">
+            <div>
+                <h2 class="section-title">Gestión de proyectos</h2>
+                <p class="section-subtitle">Administre los proyectos activos, en pausa y finalizados de la organización.
+                </p>
+            </div>
+            <button type="button" class="btn-primary-rrhh" routerLink="/admin/proyects/0" routerLinkActive="active">
+                <i class="bi bi-plus-lg"></i> Nuevo proyecto
+            </button>
         </div>
-        <button type="button" class="btn-primary-rrhh" routerLink="/admin/proyects/0" routerLinkActive="active">
-            <i class="bi bi-plus-lg"></i> Nuevo proyecto
-        </button>
-    </div>
 
-    <div class="filter-bar">
-        <div class="search-wrap">
-            <i class="bi bi-search"></i>
-            <input type="text" placeholder="Buscar proyecto por nombre...">
+        <div class="filter-bar">
+            <div class="search-wrap">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Buscar proyecto por nombre...">
+            </div>
+            <select>
+                <option selected value="">Todos los clientes</option>
+                <option>Grupo Andina</option>
+                <option>Constructora del Valle</option>
+                <option>Textiles del Norte</option>
+            </select>
         </div>
-        <select>
-            <option selected value="">Todos los clientes</option>
-            <option>Grupo Andina</option>
-            <option>Constructora del Valle</option>
-            <option>Textiles del Norte</option>
-        </select>
-    </div>
 
-    <div class="row g-4">
+        <div class="row g-4">
 
-        <!-- Proyecto 1 -->
-         @for(item of proyectList(); track $index){
+            <!-- Proyecto 1 -->
+            @for(item of proyectList(); track $index){
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="project-card">
-                         <div class="project-card-top">
-                            <div>
-                                <span class="project-tag">{{item.projectId}}</span>
-                                <h3 class="project-name">{{item.projectName}}</h3>
-                            </div>
+                    <div class="project-card-top">
+                        <div>
+                            <span class="project-tag">{{item.projectId}}</span>
+                            <h3 class="project-name">{{item.projectName}}</h3>
                         </div>
+                    </div>
 
-                        <div class="project-meta">
-                            <div><i class="bi bi-calendar3"></i>{{item.startDate | date:'dd-MM-yy' }}</div>
-                            <div><i class="bi bi-person-badge"></i> {{item.clientName}}</div>
-                            <div><i class="bi bi-telephone"></i>{{item.contactNo}}</div>
-                            <div><i class="bi bi-envelope"></i> {{item.emailId}}</div>
+                    <div class="project-meta">
+                        <div><i class="bi bi-calendar3"></i>{{item.startDate | date:'dd-MM-yy' }}</div>
+                        <div><i class="bi bi-person-badge"></i> {{item.clientName}}</div>
+                        <div><i class="bi bi-telephone"></i>{{item.contactNo}}</div>
+                        <div><i class="bi bi-envelope"></i> {{item.emailId}}</div>
+                    </div>
+                    <div class="project-footer">
+                        <div class="owner">
+                            <div class="owner-avatar">{{item.employeeName.charAt(0)}}</div>
+                            <span class="owner-name">{{item.employeeName}}</span>
                         </div>
-                        <div class="project-footer">
-                            <div class="owner">
-                                <div class="owner-avatar">{{item.employeeName.charAt(0)}}</div>
-                                <span class="owner-name">{{item.employeeName}}</span>
-                            </div>
-                            <div class="card-actions">
-                                <button class="icon-btn icon-btn-edit" data-bs-toggle="modal" data-bs-target="#projectModal" title="Editar"><i class="bi bi-pencil"></i></button>                                    <button class="icon-btn icon-btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal" title="Eliminar"><i class="bi bi-trash3"></i></button>
-                             </div>
-                         </div>
+                        <div class="card-actions">
+                            <button class="icon-btn icon-btn-edit" (click)="openEmpModal()" data-bs-toggle="modal"
+                                data-bs-target="#assignEmployeeModal" title="Agregar"><i
+                                    class="bi bi-person-fill-add"></i></button>
+                            <button class="icon-btn icon-btn-edit" data-bs-toggle="modal" data-bs-target="#projectModal"
+                                title="Editar"><i class="bi bi-pencil"></i></button>
+                            <button class="icon-btn icon-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" title="Eliminar"><i class="bi bi-trash3"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
-         }
-        
+            }
+
+
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            <i class="bi bi-folder2-open"></i>
+            <p>No se encontraron proyectos registrados.</p>
+        </div>
 
     </div>
-
-    <div class="empty-state" id="emptyState">
-        <i class="bi bi-folder2-open"></i>
-        <p>No se encontraron proyectos registrados.</p>
-    </div>
-
-</div>
 </section>
 
 <!-- Modal Crear / Editar Proyecto -->
-<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal fade assign-modal" #empModal id="assignEmployeeModal" tabindex="-1"
+    aria-labelledby="assignEmployeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Nuevo proyecto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <input type="hidden" name="projectId" value="0">
 
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="form-group">
-                                <label>Nombre del proyecto</label>
-                                <input type="text" name="projectName" placeholder="Ej. Portal de Autoservicio RRHH">
-                            </div>
+            <form id="assignEmployeeForm" novalidate>
+
+                <!-- HEADER -->
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="assignEmployeeModalLabel">Asignar empleado a proyecto</h5>
+                        <p class="modal-subtitle">Completa los datos para vincular un empleado a un proyecto activo.</p>
+                    </div>
+                    <button type="button" class="btn-close" (click)="closeEmpModal()" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+                <!-- BODY -->
+                <div class="modal-body">
+
+                    <!-- Campo oculto: se genera en backend, no se muestra al usuario -->
+                    <input type="hidden" id="empProjectId" name="empProjectId" value="0">
+
+                    <p class="form-section-label">Datos de la asignación</p>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="projectId">Proyecto <span class="required">*</span></label>
+                            <select class="form-select" id="projectId" name="projectId" required>
+                                <option value="" selected disabled>Selecciona un proyecto</option>
+                                <option value="1">Implementación ERP</option>
+                                <option value="2">Portal de Empleados</option>
+                                <option value="3">Migración de Infraestructura</option>
+                            </select>
                         </div>
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label>Cliente</label>
-                                <input type="text" name="clientName" placeholder="Nombre del cliente">
+
+                        <div class="form-group">
+                            <label for="empId">Empleado <span class="required">*</span></label>
+                            <select class="form-select" id="empId" name="empId" required>
+                                <option value="" selected disabled>Selecciona un empleado</option>
+                                <option value="1">Ana María Restrepo</option>
+                                <option value="2">Carlos Andrés Gómez</option>
+                                <option value="3">Laura Fernanda Ríos</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="assignedDate">Fecha de asignación <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="assignedDate" name="assignedDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Rol en el proyecto <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="role" name="role"
+                                placeholder="Ej. Desarrollador Backend" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid single">
+                        <div class="form-group">
+                            <label>Estado de la asignación</label>
+                            <div class="status-toggle">
+                                <span>Asignación activa</span>
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="isActive"
+                                        name="isActive" checked>
+                                </div>
                             </div>
+                            <p class="form-hint">Desactiva esta opción si la asignación aún no debe entrar en vigencia.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Fecha de inicio</label>
-                                <input type="date" name="startDate">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Líder del proyecto</label>
-                                <select name="leadByEmpId">
-                                    <option selected disabled value="">Seleccione un líder</option>
-                                    <option value="1">Mariana Cortés</option>
-                                    <option value="2">Julián Rojas</option>
-                                    <option value="3">Laura Pineda</option>
-                                    <option value="4">Daniel Arango</option>
-                                </select>
-                            </div>
-                        </div>
+                    <p class="form-section-label"
+                        style="margin-top:8px;padding-top:26px;border-top:1px solid var(--rrhh-border);">Empleados ya
+                        asignados a este proyecto</p>
+
+                    <div class="assigned-table-wrap">
+                        <table class="assigned-table" id="assignedEmployeesTable">
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Rol</th>
+                                    <th>Fecha de asignación</th>
+                                    <th>Estado</th>
+                                    <th class="text-end">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="employee-cell">
+                                            <div class="employee-avatar">AR</div>
+                                            <span class="employee-name">Ana María Restrepo</span>
+                                        </div>
+                                    </td>
+                                    <td>Desarrolladora Backend</td>
+                                    <td>12 ene 2026</td>
+                                    <td><span class="badge-status active">Activa</span></td>
+                                    <td class="text-end">
+                                        <button type="button" class="btn-remove" title="Quitar asignación"
+                                            aria-label="Quitar asignación">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6"
+                                                    stroke-linecap="round" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Se muestra cuando el proyecto seleccionado no tiene empleados asignados -->
+                        <!-- <div class="assigned-table-empty">Este proyecto aún no tiene empleados asignados.</div> -->
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Persona de contacto</label>
-                                <input type="text" name="contactPerson" placeholder="Nombre de contacto">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Teléfono de contacto</label>
-                                <input type="text" name="contactNo" placeholder="Número de contacto">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Correo electrónico</label>
-                                <input type="email" name="emailId" placeholder="correo@empresa.com">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-secondary-rrhh" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn-primary-rrhh" data-bs-dismiss="modal">Guardar proyecto</button>
-            </div>
-        </div>
-    </div>
-</div>
+                </div>
 
-<!-- Modal Confirmar Eliminación -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Eliminar proyecto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <p style="color:#5a6b8c; margin:0;">¿Está seguro de que desea eliminar este proyecto? Esta acción no se puede deshacer.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-secondary-rrhh" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn-primary-rrhh" style="background:linear-gradient(135deg,#c4311c,#e0492f);" data-bs-dismiss="modal">Eliminar</button>
-            </div>
+                <!-- FOOTER -->
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" (click)="closeEmpModal()"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar asignación</button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>
